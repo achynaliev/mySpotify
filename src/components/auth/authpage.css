@@ -1,0 +1,21 @@
+.authMain {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  height: 100%;
+}
+
+.authIMGdiv {
+  width: 60%;
+  max-width: 60%;
+  height: 100%;
+}
+
+.authBGimg {
+  width: 100%;
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+}
