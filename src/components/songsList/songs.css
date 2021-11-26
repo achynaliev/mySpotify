@@ -1,0 +1,59 @@
+.songListHeader {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 95%;
+  margin: auto;
+}
+
+.coverListItem {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-top: -10px;
+  margin-right: 10px;
+}
+
+.songListItem {
+  display: flex;
+  width: 95%;
+  margin: auto;
+  padding-bottom: 20px;
+}
+
+.titlePlusImg {
+  display: flex;
+}
+
+.listItemTexth4 {
+  color: white;
+  font-size: 14px;
+  font-size: 300;
+}
+
+.listItemTexth4gray {
+  color: rgb(177, 175, 175);
+  font-size: 14px;
+  font-size: 300;
+}
+
+.firstItemListItem {
+  width: 3%;
+}
+
+.secondItemListItem {
+  display: flex;
+  width: 35%;
+}
+
+.thirdItemListItem {
+  width: 30%;
+}
+
+.forthItemListItem {
+  width: 25%;
+}
+
+.fifthItemListItem {
+  width: 7%;
+}
