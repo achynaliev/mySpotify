@@ -1,0 +1,7 @@
+.playerMainContainer {
+  width: 100%;
+  height: 120px;
+  background-color: rgb(25, 25, 25);
+  position: absolute;
+  bottom: 0;
+}

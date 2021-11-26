@@ -1,0 +1,8 @@
+.mainSongUploadCont {
+  display: flex;
+}
+
+.uploadForm {
+  display: flex;
+  flex-direction: column;
+}

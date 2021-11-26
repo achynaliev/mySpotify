@@ -13,6 +13,7 @@ const SpotifyRoutes = () => {
         <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<MainPage />} />
+            <Route exact path="/upload" element={<MainPage />} />
             <Route exact path="/auth" element={<AuthPage />} />
           </Routes>
         </BrowserRouter>
