@@ -31,6 +31,7 @@ const UploadSongs = () => {
     const artistName = e.target.artistName.value;
     const album = e.target.album.value;
     const songCover = e.target.songCover.value;
+    const genre = e.target.songCover.value;
     if (!songName || !fileUrl || !artistName || !album || !songCover) {
       return;
     }
@@ -42,6 +43,7 @@ const UploadSongs = () => {
         songCover,
         fileUrl,
       });
+      localStorage.setItem("currentPlayList", "null");
     } catch (error) {
       console.error("Error creating user document", error);
     }
@@ -57,6 +59,14 @@ const UploadSongs = () => {
         />
         <input type="text" name="album" placeholder="name of the album" />
         <input type="text" name="songCover" placeholder="image for the song" />
+        <select id="category" name="genre">
+          <option value="hip-hop">hip-hop</option>
+          <option value="rap">rap</option>
+          <option value="scarf">pop</option>
+          <option value="scarf">rock</option>
+          <option value="scarf">russian</option>
+          <option value="scarf">kyrgyz</option>
+        </select>
         <input type="file" onChange={onFileChange} />
         <button>Submit</button>
       </form>

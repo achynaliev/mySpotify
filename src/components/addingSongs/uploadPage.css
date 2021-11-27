@@ -14,6 +14,14 @@
 
 .uploadForm > input {
   background-color: rgb(65, 65, 65);
+  color: white;
+  text-align: center;
+}
+
+select {
+  background-color: rgb(65, 65, 65);
+  color: white;
+  text-align: center;
 }
 
 .uploadForm > input[type="file"]::file-selector-button {

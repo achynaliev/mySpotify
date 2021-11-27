@@ -4,6 +4,7 @@
   height: 12%;
   background-color: rgb(25, 25, 25);
   position: absolute;
+  z-index: 1;
   bottom: 0;
 }
 

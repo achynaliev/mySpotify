@@ -12,7 +12,7 @@ const SongList = () => {
       const musicDocumentRef = collection(fireDB, "music");
       const musicCollection = await getDocs(musicDocumentRef);
       let currentPlayList = localStorage.getItem("currentPlayList");
-      if (currentPlayList === null) {
+      if (currentPlayList === null || currentPlayList === "null") {
         localStorage.setItem(
           "currentPlayList",
           JSON.stringify(musicCollection.docs)

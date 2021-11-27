@@ -7,6 +7,20 @@
   border-bottom: solid darkgray 0.001px;
 }
 
+.songListCont {
+  height: 83%;
+}
+
+.songListHeader {
+  height: 5%;
+  position: sticky;
+}
+
+.listItemsCont {
+  overflow: auto;
+  height: 95%;
+}
+
 .coverListItem {
   width: 40px;
   height: 40px;
