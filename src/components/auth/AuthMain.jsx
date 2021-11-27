@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import authBGimage from "../../images/authPageIMG.png";
 import { Button } from "@mui/material";
 import SignUpModal from "./SignUpModal";
 import SignInModal from "./SignInModal";
@@ -16,7 +15,11 @@ const AuthMain = () => {
   return (
     <div className="authMain">
       <div className="authIMGdiv">
-        <img className="authBGimg" src={authBGimage} alt="" />
+        <img
+          className="authBGimg"
+          src="https://images2.alphacoders.com/109/thumb-1920-1093974.jpg"
+          alt=""
+        />
       </div>
       <div className="authMainRight">
         <h1>Welcome</h1>

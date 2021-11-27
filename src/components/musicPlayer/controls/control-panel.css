@@ -22,7 +22,7 @@
 .volume {
   -webkit-appearance: none;
   width: 120px;
-  height: 5px;
+  height: 2px;
   background: #4caf50;
   border-radius: 4px;
   outline: none;
@@ -31,8 +31,8 @@
 
 input[type="range"]::-moz-range-track {
   width: 120px;
-  height: 5px;
-  background: #4caf50;
+  height: 2px;
+  background: rgb(172, 172, 172);
   border-radius: 4px;
   outline: none;
   opacity: 1;
@@ -52,8 +52,8 @@ input[type="range"]::-moz-range-track {
 .volume::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background: #fff;
   cursor: pointer;
   border-radius: 50%;

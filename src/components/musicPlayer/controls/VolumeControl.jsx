@@ -29,7 +29,7 @@ const VolumeControl = ({ volume, onVolumeChange }) => {
         onClick={() => {
           setMuteUnmute();
         }}
-        sx={{ marginLeft: "12px", marginTop: "4px" }}
+        sx={{ marginLeft: "14px", marginTop: "7px" }}
       />
     );
   } else {
@@ -38,7 +38,7 @@ const VolumeControl = ({ volume, onVolumeChange }) => {
         onClick={() => {
           setMuteUnmute();
         }}
-        sx={{ marginLeft: "12px", marginTop: "4px" }}
+        sx={{ marginLeft: "14px", marginTop: "7px" }}
       />
     );
   }
