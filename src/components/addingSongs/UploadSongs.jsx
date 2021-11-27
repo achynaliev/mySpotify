@@ -42,6 +42,7 @@ const UploadSongs = () => {
         album,
         songCover,
         fileUrl,
+        genre,
       });
       localStorage.setItem("currentPlayList", "null");
     } catch (error) {

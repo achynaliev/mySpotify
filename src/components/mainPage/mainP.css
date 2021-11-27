@@ -71,11 +71,11 @@
 
 .blurred {
   position: absolute;
-  width: 70%;
-  height: 100px;
+  width: 80%;
+  height: 110px;
   z-index: 0;
   filter: blur(250px);
-  background-color: #deaaff;
+  background-color: blue;
 }
 
 .NavUserProfile {

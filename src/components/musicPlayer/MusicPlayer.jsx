@@ -45,6 +45,98 @@ const MusicPlayer = () => {
     artist: "",
   });
 
+  const playNext = () => {
+    let currentPlayList = localStorage.getItem("currentPlayList");
+    currentPlayList = JSON.parse(currentPlayList);
+    setAutoP(true);
+    if (playListLen === current) {
+      setCurrent(0);
+      let fileURL =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.fileUrl
+          .stringValue;
+      let artist =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.artistName
+          .stringValue;
+      let title =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.songName
+          .stringValue;
+      let currentCov =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.songCover
+          .stringValue;
+      setCurrentSong(fileURL);
+      setCurrentCover(currentCov);
+      setTitleAndArtist({ title, artist });
+      play();
+      setIsPlaying(true);
+    } else {
+      let newCurrent = current + 1;
+      setCurrent(newCurrent);
+      let fileURL =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .fileUrl.stringValue;
+      let artist =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .artistName.stringValue;
+      let title =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .songName.stringValue;
+      let currentCov =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .songCover.stringValue;
+      setCurrentSong(fileURL);
+      setCurrentCover(currentCov);
+      setTitleAndArtist({ title, artist });
+      play();
+      setIsPlaying(true);
+    }
+  };
+
+  const playPrev = (e) => {
+    let currentPlayList = localStorage.getItem("currentPlayList");
+    currentPlayList = JSON.parse(currentPlayList);
+    setAutoP(true);
+    if (current === 0) {
+      setCurrent(playListLen);
+      let fileURL =
+        currentPlayList[playListLen]["_document"].data.value.mapValue.fields
+          .fileUrl.stringValue;
+      let artist =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.artistName
+          .stringValue;
+      let title =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.songName
+          .stringValue;
+      let currentCov =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.songCover
+          .stringValue;
+      setCurrentSong(fileURL);
+      setCurrentCover(currentCov);
+      setTitleAndArtist({ title, artist });
+      play();
+      setIsPlaying(true);
+    } else {
+      let newCurrent = current - 1;
+      setCurrent(newCurrent);
+      let fileURL =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .fileUrl.stringValue;
+      let artist =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .artistName.stringValue;
+      let title =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .songName.stringValue;
+      let currentCov =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .songCover.stringValue;
+      setCurrentSong(fileURL);
+      setCurrentCover(currentCov);
+      setTitleAndArtist({ title, artist });
+      play();
+      setIsPlaying(true);
+    }
+  };
+
   const audioRef = useRef();
 
   const onChange = (e) => {
@@ -61,6 +153,12 @@ const MusicPlayer = () => {
     const audio = audioRef.current;
     audio.volume = volume;
   }, [volume]);
+
+  React.useEffect(() => {
+    if (percentage === "100.00") {
+      playNext();
+    }
+  }, [percentage]);
 
   const play = () => {
     const audio = audioRef.current;
@@ -109,16 +207,8 @@ const MusicPlayer = () => {
         <ControlPanel
           play={play}
           isPlaying={isPlaying}
-          current={current}
-          setCurrent={setCurrent}
-          playListLen={playListLen}
-          setCurrentSong={setCurrentSong}
-          audioRef={audioRef}
-          volume={volume}
-          setAutoP={setAutoP}
-          setTitleAndArtist={setTitleAndArtist}
-          setCurrentCover={setCurrentCover}
-          setIsPlaying={setIsPlaying}
+          playNext={playNext}
+          playPrev={playPrev}
         />
         <Slider
           percentage={percentage}

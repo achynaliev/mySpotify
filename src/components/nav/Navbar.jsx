@@ -8,7 +8,6 @@ const Navbar = () => {
   let user = localStorage.getItem("userFields");
   user = JSON.parse(user);
   const [userState, setUserState] = useState({ imageURL: "", username: "" });
-  console.log(user);
 
   const setUser = () => {
     user = localStorage.getItem("userFields");
@@ -41,7 +40,7 @@ const Navbar = () => {
         </div>
         <div className="NavUserProfile">
           <img className="userAva" src={userState.imageURL} alt="" />
-          <h4 className="NavUsername">{userState.username}</h4>
+          <h4 className="NavUsername">@{userState.username}</h4>
           <ArrowDropDownIcon />
         </div>
       </div>

@@ -8,6 +8,8 @@
 }
 
 .songListCont {
+  position: absolute;
+  width: 70%;
   height: 83%;
 }
 
@@ -35,6 +37,7 @@
   width: 95%;
   margin: auto;
   padding-bottom: 20px;
+  z-index: 1;
 }
 
 .titlePlusImg {
@@ -76,4 +79,37 @@
 
 .listItemsCont {
   padding-top: 22px;
+}
+
+.btn-container-play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+}
+
+.btn-play-list-item {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #4caf50;
+  cursor: pointer;
+}
+
+.btn-stop-list-item {
+  height: 15px;
+  width: 15px;
+  border-left: 10px solid #4caf50;
+  border-right: 10px solid #4caf50;
+  cursor: pointer;
+}
+
+.lock:hover .icon-unlock,
+.lock .icon-lock {
+  display: none;
+}
+.lock:hover .icon-lock {
+  display: inline;
 }

@@ -1,11 +1,17 @@
 import React from "react";
 import "./songs.css";
 
-const SongItem = ({ song, index }) => {
+const SongItem = ({ song, index, play, isPlaying }) => {
   return (
     <div className="songListItem">
-      <div className="firstItemListItem">
-        <h4 className="listItemTexth4">{index + 1}</h4>
+      <div className="firstItemListItem lock">
+        <h4 className="listItemTexth4 icon-unlock">{index + 1}</h4>
+        <div className="btn-container-play icon-lock">
+          <div
+            onClick={play}
+            className={isPlaying ? "btn-stop-list-item" : "btn-play-list-item"}
+          ></div>
+        </div>
       </div>
       <div className="secondItemListItem">
         <img className="coverListItem" src={song.songCover} alt=""></img>
