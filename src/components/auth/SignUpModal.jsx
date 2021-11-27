@@ -145,7 +145,6 @@ const SignUpModal = (props) => {
                     {errors.passwordConfirmation}
                   </Form.Control.Feedback>
                 </Form.Group>
-
                 <Button variant="primary" type="submit">
                   Submit
                 </Button>

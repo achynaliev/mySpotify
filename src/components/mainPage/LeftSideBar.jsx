@@ -4,6 +4,8 @@ import spotify from "../../images/spotify.png";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import AlbumIcon from "@mui/icons-material/Album";
+import artist from "../../images/artist.png";
 
 const LeftSideBar = () => {
   return (
@@ -26,6 +28,25 @@ const LeftSideBar = () => {
               className="leftListIcons"
             />
             <h5 className="leftSideListText">Upload</h5>
+          </div>
+        </Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <div className="listItemLeftBar">
+            <img
+              src={artist}
+              alt=""
+              style={{ width: "28px", height: "28px" }}
+            />
+            <h5 className="leftSideListText">Artist</h5>
+          </div>
+        </Link>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <div className="listItemLeftBar">
+            <AlbumIcon
+              sx={{ fontSize: "28px", color: "white" }}
+              className="leftListIcons"
+            />
+            <h5 className="leftSideListText">Albums</h5>
           </div>
         </Link>
       </div>
