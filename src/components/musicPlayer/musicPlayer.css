@@ -1,7 +1,7 @@
 .playerMainContainer {
   display: flex;
   width: 100%;
-  height: 120px;
+  height: 12%;
   background-color: rgb(25, 25, 25);
   position: absolute;
   bottom: 0;

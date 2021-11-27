@@ -10,16 +10,19 @@ const Navbar = () => {
   console.log(user);
 
   return (
-    <div className="navContainer">
-      <div className="navNavigation">
-        <ArrowBackIosIcon />
-        <ArrowForwardIosIcon />
+    <div className="navWrapper">
+      <div className="navContainer">
+        <div className="navNavigation">
+          <ArrowBackIosIcon />
+          <ArrowForwardIosIcon />
+        </div>
+        <div className="NavUserProfile">
+          <img className="userAva" src={user.imageURL.stringValue} alt="" />
+          <h4 className="NavUsername">{user.username.stringValue}</h4>
+          <ArrowDropDownIcon />
+        </div>
       </div>
-      <div className="NavUserProfile">
-        <img className="userAva" src={user.imageURL.stringValue} alt="" />
-        <h4 className="NavUsername">{user.username.stringValue}</h4>
-        <ArrowDropDownIcon />
-      </div>
+      <div className="blurred"></div>
     </div>
   );
 };
