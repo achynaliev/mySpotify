@@ -47,9 +47,11 @@ const SongList = () => {
             <h4 className="listItemTexth4gray">_</h4>
           </div>
         </div>
-        {songs.map((song, index) => {
-          return <SongItem key={index} song={song} index={index}></SongItem>;
-        })}
+        <div className="listItemsCont">
+          {songs.map((song, index) => {
+            return <SongItem key={index} song={song} index={index}></SongItem>;
+          })}
+        </div>
       </div>
     </>
   );

@@ -1,9 +1,10 @@
 .songListHeader {
   display: flex;
   padding-top: 20px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   width: 95%;
   margin: auto;
+  border-bottom: solid darkgray 0.001px;
 }
 
 .coverListItem {
@@ -56,4 +57,8 @@
 
 .fifthItemListItem {
   width: 7%;
+}
+
+.listItemsCont {
+  padding-top: 22px;
 }

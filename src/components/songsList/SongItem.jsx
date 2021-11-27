@@ -2,7 +2,6 @@ import React from "react";
 import "./songs.css";
 
 const SongItem = ({ song, index }) => {
-  console.log(song);
   return (
     <div className="songListItem">
       <div className="firstItemListItem">

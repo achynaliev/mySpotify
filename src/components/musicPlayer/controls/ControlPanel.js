@@ -12,6 +12,9 @@ function ControlPanel({
   playListLen,
   current,
   setAutoP,
+  setTitleAndArtist,
+  setCurrentCover,
+  setIsPlaying,
 }) {
   const playNext = (e) => {
     let currentPlayList = localStorage.getItem("currentPlayList");
@@ -22,16 +25,40 @@ function ControlPanel({
       let fileURL =
         currentPlayList[0]["_document"].data.value.mapValue.fields.fileUrl
           .stringValue;
+      let artist =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.artistName
+          .stringValue;
+      let title =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.songName
+          .stringValue;
+      let currentCov =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.songCover
+          .stringValue;
       setCurrentSong(fileURL);
+      setCurrentCover(currentCov);
+      setTitleAndArtist({ title, artist });
       play();
+      setIsPlaying(true);
     } else {
       let newCurrent = current + 1;
       setCurrent(newCurrent);
       let fileURL =
         currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
           .fileUrl.stringValue;
+      let artist =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .artistName.stringValue;
+      let title =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .songName.stringValue;
+      let currentCov =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .songCover.stringValue;
       setCurrentSong(fileURL);
+      setCurrentCover(currentCov);
+      setTitleAndArtist({ title, artist });
       play();
+      setIsPlaying(true);
     }
   };
 
@@ -44,16 +71,40 @@ function ControlPanel({
       let fileURL =
         currentPlayList[playListLen]["_document"].data.value.mapValue.fields
           .fileUrl.stringValue;
+      let artist =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.artistName
+          .stringValue;
+      let title =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.songName
+          .stringValue;
+      let currentCov =
+        currentPlayList[0]["_document"].data.value.mapValue.fields.songCover
+          .stringValue;
       setCurrentSong(fileURL);
+      setCurrentCover(currentCov);
+      setTitleAndArtist({ title, artist });
       play();
+      setIsPlaying(true);
     } else {
       let newCurrent = current - 1;
       setCurrent(newCurrent);
       let fileURL =
         currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
           .fileUrl.stringValue;
+      let artist =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .artistName.stringValue;
+      let title =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .songName.stringValue;
+      let currentCov =
+        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
+          .songCover.stringValue;
       setCurrentSong(fileURL);
+      setCurrentCover(currentCov);
+      setTitleAndArtist({ title, artist });
       play();
+      setIsPlaying(true);
     }
   };
 

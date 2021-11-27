@@ -1,7 +1,45 @@
 .playerMainContainer {
+  display: flex;
   width: 100%;
   height: 120px;
   background-color: rgb(25, 25, 25);
   position: absolute;
   bottom: 0;
+}
+
+.playerTitleAndArtist > div {
+  padding-top: 50px;
+  padding-left: 40px;
+}
+
+.playerTitleAndArtist > div > h4 {
+  font-size: 13px;
+  color: white;
+  font-weight: 300;
+}
+
+.playerTitleAndArtist > div > h3 {
+  font-size: 13px;
+  color: white;
+  font-weight: 600;
+}
+
+.playerTitleAndArtist {
+  width: 20%;
+}
+
+.mainPlayerControls {
+  width: 60%;
+  flex-direction: column;
+}
+
+.playerVolumeContols {
+  width: 20%;
+}
+
+.currentCover {
+  position: absolute;
+  width: 15%;
+  height: auto;
+  bottom: 120px;
 }

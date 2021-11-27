@@ -1,9 +1,10 @@
 .control-panel {
-  width: 14%;
+  width: 20%;
   padding: 15px 0;
   display: flex;
   margin: auto;
   justify-content: center;
+  margin-top: 5px;
 }
 
 .timer {
@@ -15,7 +16,7 @@
 .volume-container {
   position: absolute;
   top: 48px;
-  right: 10px;
+  right: 40px;
 }
 
 .volume {

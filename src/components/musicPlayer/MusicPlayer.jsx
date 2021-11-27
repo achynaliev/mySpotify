@@ -11,7 +11,18 @@ const MusicPlayer = () => {
     let fileURL =
       currentPlayList[0]["_document"].data.value.mapValue.fields.fileUrl
         .stringValue;
+    let artist =
+      currentPlayList[0]["_document"].data.value.mapValue.fields.artistName
+        .stringValue;
+    let title =
+      currentPlayList[0]["_document"].data.value.mapValue.fields.songName
+        .stringValue;
+    let currentCov =
+      currentPlayList[0]["_document"].data.value.mapValue.fields.songCover
+        .stringValue;
     setCurrentSong(fileURL);
+    setCurrentCover(currentCov);
+    setTitleAndArtist({ title, artist });
     setPlayListLen(currentPlayList.length - 1);
   }
 
@@ -27,7 +38,12 @@ const MusicPlayer = () => {
   const [current, setCurrent] = useState(0);
   const [playListLen, setPlayListLen] = useState(0);
   const [currentSong, setCurrentSong] = useState(null);
+  const [currentCover, setCurrentCover] = useState(null);
   const [autoP, setAutoP] = useState(false);
+  const [titleAndArtist, setTitleAndArtist] = useState({
+    title: "",
+    artist: "",
+  });
 
   const audioRef = useRef();
 
@@ -39,9 +55,12 @@ const MusicPlayer = () => {
 
   const onVolumeChange = (vol) => {
     setVolume(vol);
+  };
+
+  React.useEffect(() => {
     const audio = audioRef.current;
     audio.volume = volume;
-  };
+  }, [volume]);
 
   const play = () => {
     const audio = audioRef.current;
@@ -70,6 +89,13 @@ const MusicPlayer = () => {
 
   return (
     <div className="playerMainContainer">
+      <img className="currentCover" src={currentCover} alt="" />
+      <div className="playerTitleAndArtist">
+        <div>
+          <h3>{titleAndArtist.title}</h3>
+          <h4>{titleAndArtist.artist}</h4>
+        </div>
+      </div>
       <audio
         autoPlay={autoP}
         ref={audioRef}
@@ -79,24 +105,31 @@ const MusicPlayer = () => {
         }}
         src={currentSong}
       ></audio>
-      <ControlPanel
-        play={play}
-        isPlaying={isPlaying}
-        current={current}
-        setCurrent={setCurrent}
-        playListLen={playListLen}
-        setCurrentSong={setCurrentSong}
-        audioRef={audioRef}
-        volume={volume}
-        setAutoP={setAutoP}
-      />
-      <Slider
-        percentage={percentage}
-        onChange={onChange}
-        duration={duration}
-        currentTime={currentTime}
-      />
-      <VolumeControl volume={volume} setVolume={onVolumeChange} />
+      <div className="mainPlayerControls">
+        <ControlPanel
+          play={play}
+          isPlaying={isPlaying}
+          current={current}
+          setCurrent={setCurrent}
+          playListLen={playListLen}
+          setCurrentSong={setCurrentSong}
+          audioRef={audioRef}
+          volume={volume}
+          setAutoP={setAutoP}
+          setTitleAndArtist={setTitleAndArtist}
+          setCurrentCover={setCurrentCover}
+          setIsPlaying={setIsPlaying}
+        />
+        <Slider
+          percentage={percentage}
+          onChange={onChange}
+          duration={duration}
+          currentTime={currentTime}
+        />
+      </div>
+      <div className="playerVolumeContols">
+        <VolumeControl volume={volume} onVolumeChange={onVolumeChange} />
+      </div>
     </div>
   );
 };
