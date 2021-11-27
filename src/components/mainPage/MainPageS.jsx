@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../Navbar";
+import Navbar from "../nav/Navbar";
 import LeftSideBar from "./LeftSideBar";
 import RightSideBar from "./RightSideBar";
 import SongList from "../songsList/SongList";

@@ -103,7 +103,6 @@ const AuthContextProvider = (props) => {
 
   const generateUserDocument = async (user, additionalData) => {
     if (!user) return;
-    console.log(user, additionalData);
 
     const userRef = doc(fireDB, "users", `${user.uid}`);
     const querySnapshot = await getDoc(userRef);

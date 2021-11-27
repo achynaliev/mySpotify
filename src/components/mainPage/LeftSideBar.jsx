@@ -16,7 +16,7 @@ const LeftSideBar = () => {
               sx={{ fontSize: "28px", color: "white" }}
               className="leftListIcons"
             />
-            <h5 className="leftSideListText">Home</h5>
+            <h5 className="leftSideListText">Explore</h5>
           </div>
         </Link>
         <Link to="/upload" style={{ textDecoration: "none" }}>

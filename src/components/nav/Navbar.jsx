@@ -2,9 +2,13 @@ import React from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import "./mainPage/mainP.css";
+import "../mainPage/mainP.css";
 
 const Navbar = () => {
+  let user = localStorage.getItem("userFields");
+  user = JSON.parse(user);
+  console.log(user);
+
   return (
     <div className="navContainer">
       <div className="navNavigation">
@@ -12,7 +16,8 @@ const Navbar = () => {
         <ArrowForwardIosIcon />
       </div>
       <div className="NavUserProfile">
-        <h5>Chynaliev</h5>
+        <img className="userAva" src={user.imageURL.stringValue} alt="" />
+        <h4 className="NavUsername">{user.username.stringValue}</h4>
         <ArrowDropDownIcon />
       </div>
     </div>
