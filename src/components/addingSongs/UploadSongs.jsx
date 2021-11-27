@@ -2,6 +2,7 @@ import React from "react";
 import { fireDB, storage } from "../../base";
 import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { collection, addDoc } from "firebase/firestore";
+import "./uploadPage.css";
 
 const UploadSongs = () => {
   const [fileUrl, setFileUrl] = React.useState(null);
