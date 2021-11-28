@@ -49,7 +49,7 @@ const SongList = () => {
         </div>
         <div className="listItemsCont">
           {songs.map((song, index) => {
-            return <SongItem key={index} song={song} index={index}></SongItem>;
+            return <SongItem key={index} songg={song} index={index}></SongItem>;
           })}
         </div>
       </div>

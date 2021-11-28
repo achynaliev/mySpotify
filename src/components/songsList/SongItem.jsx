@@ -1,7 +1,18 @@
 import React from "react";
 import "./songs.css";
+import { playerContext } from "../../contexts/PlayerContext";
 
-const SongItem = ({ song, index, play, isPlaying }) => {
+const SongItem = ({ songg, index }) => {
+  const { song, selectASong } = React.useContext(playerContext);
+
+  const play = () => {
+    if (song.isPlaying) {
+      selectASong(index, false);
+    } else {
+      selectASong(index, true);
+    }
+  };
+
   return (
     <div className="songListItem">
       <div className="firstItemListItem lock">
@@ -9,19 +20,23 @@ const SongItem = ({ song, index, play, isPlaying }) => {
         <div className="btn-container-play icon-lock">
           <div
             onClick={play}
-            className={isPlaying ? "btn-stop-list-item" : "btn-play-list-item"}
+            className={
+              song.isPlaying && song.index === index
+                ? "btn-stop-list-item"
+                : "btn-play-list-item"
+            }
           ></div>
         </div>
       </div>
       <div className="secondItemListItem">
-        <img className="coverListItem" src={song.songCover} alt=""></img>
-        <h4 className="listItemTexth4">{song.songName}</h4>
+        <img className="coverListItem" src={songg.songCover} alt=""></img>
+        <h4 className="listItemTexth4">{songg.songName}</h4>
       </div>
       <div className="thirdItemListItem">
-        <h4 className="listItemTexth4">{song.artistName}</h4>
+        <h4 className="listItemTexth4">{songg.artistName}</h4>
       </div>
       <div className="forthItemListItem">
-        <h4 className="listItemTexth4gray">{song.album}</h4>
+        <h4 className="listItemTexth4gray">{songg.album}</h4>
       </div>
       <div className="fifthItemListItem">
         <div></div>

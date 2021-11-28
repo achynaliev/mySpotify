@@ -31,6 +31,8 @@ const Navbar = () => {
     }
   }, []);
 
+  let randomColor = "#" + (((1 << 24) * Math.random()) | 0).toString(16);
+
   return (
     <div className="navWrapper">
       <div className="navContainer">
@@ -44,7 +46,7 @@ const Navbar = () => {
           <ArrowDropDownIcon />
         </div>
       </div>
-      <div className="blurred"></div>
+      <div style={{ backgroundColor: randomColor }} className="blurred"></div>
     </div>
   );
 };

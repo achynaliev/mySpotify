@@ -1,10 +1,27 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import "./musicPlayer.css";
 import Slider from "./slider/Slider";
 import ControlPanel from "./controls/ControlPanel";
 import VolumeControl from "./controls/VolumeControl";
+import { playerContext } from "../../contexts/PlayerContext";
 
 const MusicPlayer = () => {
+  const [percentage, setPercentage] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [volume, setVolume] = useState(1.0);
+  const [current, setCurrent] = useState(0);
+  const [playListLen, setPlayListLen] = useState(0);
+  const [currentSong, setCurrentSong] = useState(null);
+  const [currentCover, setCurrentCover] = useState(null);
+  const [autoP, setAutoP] = useState(false);
+  const [titleAndArtist, setTitleAndArtist] = useState({
+    title: "",
+    artist: "",
+  });
+  const { song, selectASong } = useContext(playerContext);
+
   function setPlayList() {
     let currentPlayList = localStorage.getItem("currentPlayList");
     currentPlayList = JSON.parse(currentPlayList);
@@ -30,20 +47,37 @@ const MusicPlayer = () => {
     setTimeout(() => setPlayList(), 2000);
   }, []);
 
-  const [percentage, setPercentage] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(1.0);
-  const [current, setCurrent] = useState(0);
-  const [playListLen, setPlayListLen] = useState(0);
-  const [currentSong, setCurrentSong] = useState(null);
-  const [currentCover, setCurrentCover] = useState(null);
-  const [autoP, setAutoP] = useState(false);
-  const [titleAndArtist, setTitleAndArtist] = useState({
-    title: "",
-    artist: "",
-  });
+  const playSong = (index) => {
+    let currentPlayList = localStorage.getItem("currentPlayList");
+    currentPlayList = JSON.parse(currentPlayList);
+    setAutoP(true);
+    setCurrent(index);
+    let fileURL =
+      currentPlayList[index]["_document"].data.value.mapValue.fields.fileUrl
+        .stringValue;
+    let artist =
+      currentPlayList[index]["_document"].data.value.mapValue.fields.artistName
+        .stringValue;
+    let title =
+      currentPlayList[index]["_document"].data.value.mapValue.fields.songName
+        .stringValue;
+    let currentCov =
+      currentPlayList[index]["_document"].data.value.mapValue.fields.songCover
+        .stringValue;
+    setCurrentSong(fileURL);
+    setCurrentCover(currentCov);
+    setTitleAndArtist({ title, artist });
+    play();
+    setIsPlaying(true);
+  };
+
+  React.useEffect(() => {
+    if (song.isPlaying === true) {
+      playSong(song.index);
+    } else if (song.isPlaying === false) {
+      play();
+    }
+  }, [song]);
 
   const playNext = () => {
     let currentPlayList = localStorage.getItem("currentPlayList");
