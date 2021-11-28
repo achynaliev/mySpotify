@@ -7,7 +7,6 @@ import { playerContext } from "../../contexts/PlayerContext";
 
 const MusicPlayer = () => {
   const [percentage, setPercentage] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(1.0);
@@ -41,6 +40,7 @@ const MusicPlayer = () => {
     setCurrentCover(currentCov);
     setTitleAndArtist({ title, artist });
     setPlayListLen(currentPlayList.length - 1);
+    selectASong(0, false);
   }
 
   React.useEffect(() => {
@@ -68,106 +68,33 @@ const MusicPlayer = () => {
     setCurrentCover(currentCov);
     setTitleAndArtist({ title, artist });
     play();
-    setIsPlaying(true);
   };
 
   React.useEffect(() => {
-    if (song.isPlaying === true) {
-      playSong(song.index);
-    } else if (song.isPlaying === false) {
+    if (song.isPlaying) {
+      if (song.index !== current) {
+        playSong(song.index);
+      } else {
+        play();
+      }
+    } else {
       play();
     }
   }, [song]);
 
   const playNext = () => {
-    let currentPlayList = localStorage.getItem("currentPlayList");
-    currentPlayList = JSON.parse(currentPlayList);
-    setAutoP(true);
     if (playListLen === current) {
-      setCurrent(0);
-      let fileURL =
-        currentPlayList[0]["_document"].data.value.mapValue.fields.fileUrl
-          .stringValue;
-      let artist =
-        currentPlayList[0]["_document"].data.value.mapValue.fields.artistName
-          .stringValue;
-      let title =
-        currentPlayList[0]["_document"].data.value.mapValue.fields.songName
-          .stringValue;
-      let currentCov =
-        currentPlayList[0]["_document"].data.value.mapValue.fields.songCover
-          .stringValue;
-      setCurrentSong(fileURL);
-      setCurrentCover(currentCov);
-      setTitleAndArtist({ title, artist });
-      play();
-      setIsPlaying(true);
+      selectASong(0, true);
     } else {
-      let newCurrent = current + 1;
-      setCurrent(newCurrent);
-      let fileURL =
-        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
-          .fileUrl.stringValue;
-      let artist =
-        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
-          .artistName.stringValue;
-      let title =
-        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
-          .songName.stringValue;
-      let currentCov =
-        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
-          .songCover.stringValue;
-      setCurrentSong(fileURL);
-      setCurrentCover(currentCov);
-      setTitleAndArtist({ title, artist });
-      play();
-      setIsPlaying(true);
+      selectASong(current + 1, true);
     }
   };
 
   const playPrev = (e) => {
-    let currentPlayList = localStorage.getItem("currentPlayList");
-    currentPlayList = JSON.parse(currentPlayList);
-    setAutoP(true);
     if (current === 0) {
-      setCurrent(playListLen);
-      let fileURL =
-        currentPlayList[playListLen]["_document"].data.value.mapValue.fields
-          .fileUrl.stringValue;
-      let artist =
-        currentPlayList[0]["_document"].data.value.mapValue.fields.artistName
-          .stringValue;
-      let title =
-        currentPlayList[0]["_document"].data.value.mapValue.fields.songName
-          .stringValue;
-      let currentCov =
-        currentPlayList[0]["_document"].data.value.mapValue.fields.songCover
-          .stringValue;
-      setCurrentSong(fileURL);
-      setCurrentCover(currentCov);
-      setTitleAndArtist({ title, artist });
-      play();
-      setIsPlaying(true);
+      selectASong(0, true);
     } else {
-      let newCurrent = current - 1;
-      setCurrent(newCurrent);
-      let fileURL =
-        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
-          .fileUrl.stringValue;
-      let artist =
-        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
-          .artistName.stringValue;
-      let title =
-        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
-          .songName.stringValue;
-      let currentCov =
-        currentPlayList[newCurrent]["_document"].data.value.mapValue.fields
-          .songCover.stringValue;
-      setCurrentSong(fileURL);
-      setCurrentCover(currentCov);
-      setTitleAndArtist({ title, artist });
-      play();
-      setIsPlaying(true);
+      selectASong(current - 1, true);
     }
   };
 
@@ -198,13 +125,11 @@ const MusicPlayer = () => {
     const audio = audioRef.current;
     audio.volume = volume;
 
-    if (!isPlaying) {
-      setIsPlaying(true);
+    if (song.isPlaying) {
       audio.play();
     }
 
-    if (isPlaying) {
-      setIsPlaying(false);
+    if (!song.isPlaying) {
       audio.pause();
     }
   };
@@ -240,9 +165,10 @@ const MusicPlayer = () => {
       <div className="mainPlayerControls">
         <ControlPanel
           play={play}
-          isPlaying={isPlaying}
+          isPlaying={song.isPlaying}
           playNext={playNext}
           playPrev={playPrev}
+          current={current}
         />
         <Slider
           percentage={percentage}

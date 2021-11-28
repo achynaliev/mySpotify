@@ -99,10 +99,10 @@
 }
 
 .btn-stop-list-item {
-  height: 15px;
-  width: 15px;
-  border-left: 10px solid #4caf50;
-  border-right: 10px solid #4caf50;
+  height: 18px;
+  width: 18px;
+  border-left: 7px solid #4caf50;
+  border-right: 7px solid #4caf50;
   cursor: pointer;
 }
 
