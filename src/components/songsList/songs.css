@@ -10,7 +10,8 @@
 .songListCont {
   position: absolute;
   width: 70%;
-  height: 83%;
+  height: 84%;
+  z-index: 1;
 }
 
 .songListHeader {

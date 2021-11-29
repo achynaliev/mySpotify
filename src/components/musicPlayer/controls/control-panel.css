@@ -1,10 +1,11 @@
 .control-panel {
-  width: 20%;
-  padding: 15px 0;
+  width: 22%;
   display: flex;
   margin: auto;
   justify-content: center;
-  margin-top: 5px;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 .timer {

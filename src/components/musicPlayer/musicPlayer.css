@@ -1,7 +1,10 @@
 .playerMainContainer {
   display: flex;
   width: 100%;
-  height: 12%;
+  height: 11%;
+  margin-top: 5px;
+  padding-top: 5px;
+  margin-bottom: 5px;
   background-color: rgb(25, 25, 25);
   position: absolute;
   z-index: 1;
@@ -9,7 +12,7 @@
 }
 
 .playerTitleAndArtist > div {
-  padding-top: 50px;
+  padding-top: 30px;
   padding-left: 40px;
 }
 
@@ -42,5 +45,5 @@
   position: absolute;
   width: 15%;
   height: auto;
-  bottom: 120px;
+  bottom: 110px;
 }

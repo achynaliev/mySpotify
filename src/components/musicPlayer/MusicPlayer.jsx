@@ -19,6 +19,7 @@ const MusicPlayer = () => {
     title: "",
     artist: "",
   });
+  const [repeat, setRepeat] = useState(false);
   const { song, selectASong } = useContext(playerContext);
 
   function setPlayList() {
@@ -90,7 +91,7 @@ const MusicPlayer = () => {
     }
   };
 
-  const playPrev = (e) => {
+  const playPrev = () => {
     if (current === 0) {
       selectASong(0, true);
     } else {
@@ -117,7 +118,11 @@ const MusicPlayer = () => {
 
   React.useEffect(() => {
     if (percentage === "100.00") {
-      playNext();
+      if (repeat) {
+        playSong(current);
+      } else {
+        playNext();
+      }
     }
   }, [percentage]);
 
@@ -169,6 +174,8 @@ const MusicPlayer = () => {
           playNext={playNext}
           playPrev={playPrev}
           current={current}
+          repeat={repeat}
+          setRepeat={setRepeat}
         />
         <Slider
           percentage={percentage}
