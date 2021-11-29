@@ -14,12 +14,21 @@ function ControlPanel({
   current,
   repeat,
   setRepeat,
+  setRandom,
+  random,
 }) {
   let rep;
   if (repeat) {
     rep = { fontSize: "18px", marginLeft: "15px", color: "#4caf50" };
   } else {
     rep = { fontSize: "18px", marginLeft: "15px" };
+  }
+
+  let rand;
+  if (random) {
+    rand = { fontSize: "18px", marginRight: "15px", color: "#4caf50" };
+  } else {
+    rand = { fontSize: "18px", marginRight: "15px" };
   }
 
   const handleRepeat = () => {
@@ -30,9 +39,17 @@ function ControlPanel({
     }
   };
 
+  const handleRandom = () => {
+    if (random) {
+      setRandom(false);
+    } else {
+      setRandom(true);
+    }
+  };
+
   return (
     <div className="control-panel">
-      <ShuffleIcon sx={{ fontSize: "18px", marginRight: "15px" }} />
+      <ShuffleIcon onClick={() => handleRandom()} sx={rand} />
       <SkipPreviousIcon sx={{ fontSize: "34px" }} onClick={(e) => playPrev()}>
         prev
       </SkipPreviousIcon>

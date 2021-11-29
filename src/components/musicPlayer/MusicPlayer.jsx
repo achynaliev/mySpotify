@@ -20,7 +20,15 @@ const MusicPlayer = () => {
     artist: "",
   });
   const [repeat, setRepeat] = useState(false);
+  const [random, setRandom] = useState(false);
+  const [prevRandom, setPrevRandom] = useState([]);
   const { song, selectASong } = useContext(playerContext);
+
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   function setPlayList() {
     let currentPlayList = localStorage.getItem("currentPlayList");
@@ -84,18 +92,39 @@ const MusicPlayer = () => {
   }, [song]);
 
   const playNext = () => {
-    if (playListLen === current) {
-      selectASong(0, true);
+    if (random) {
+      let randomInt = getRandomInt(0, playListLen);
+      selectASong(randomInt, true);
+      let randomHistory = [...prevRandom, randomInt];
+      setPrevRandom(randomHistory);
     } else {
-      selectASong(current + 1, true);
+      if (playListLen === current) {
+        selectASong(0, true);
+      } else {
+        selectASong(current + 1, true);
+      }
     }
   };
 
   const playPrev = () => {
-    if (current === 0) {
-      selectASong(0, true);
+    if (random) {
+      if (prevRandom.length === 0) {
+        let randomInt = getRandomInt(0, playListLen);
+        selectASong(randomInt, true);
+        let randomHistory = [...prevRandom, randomInt];
+        setPrevRandom(randomHistory);
+      } else {
+        let randomHistory = [...prevRandom];
+        let lastIndex = randomHistory.pop();
+        selectASong(lastIndex, true);
+        setPrevRandom(randomHistory);
+      }
     } else {
-      selectASong(current - 1, true);
+      if (current === 0) {
+        selectASong(0, true);
+      } else {
+        selectASong(current - 1, true);
+      }
     }
   };
 
@@ -176,6 +205,8 @@ const MusicPlayer = () => {
           current={current}
           repeat={repeat}
           setRepeat={setRepeat}
+          setRandom={setRandom}
+          random={random}
         />
         <Slider
           percentage={percentage}
