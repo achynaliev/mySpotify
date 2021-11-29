@@ -6,9 +6,14 @@ import HomeIcon from "@mui/icons-material/Home";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import AlbumIcon from "@mui/icons-material/Album";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import artist from "../../images/artist.png";
 
 const LeftSideBar = () => {
+  const handleCreatePlaylist = () => {
+    console.log("here");
+  };
+
   return (
     <div className="leftSideMainCont">
       <img className="mainLogo" src={spotify} alt="" />
@@ -31,6 +36,15 @@ const LeftSideBar = () => {
             <h5 className="leftSideListText">Upload</h5>
           </div>
         </Link>
+        <Link to="/store" style={{ textDecoration: "none" }}>
+          <div className="listItemLeftBar">
+            <ProductionQuantityLimitsIcon
+              sx={{ fontSize: "28px", color: "white" }}
+              className="leftListIcons"
+            />
+            <h5 className="leftSideListText">Store</h5>
+          </div>
+        </Link>
         <Link to="/" style={{ textDecoration: "none" }}>
           <div className="listItemLeftBar">
             <img
@@ -50,12 +64,12 @@ const LeftSideBar = () => {
             <h5 className="leftSideListText">Albums</h5>
           </div>
         </Link>
-        <div className="listItemLeftBar">
+        <div onClick={() => handleCreatePlaylist()} className="listItemLeftBar">
           <AddBoxIcon
             sx={{ fontSize: "28px", color: "white" }}
             className="leftListIcons"
           />
-          <h5 className="leftSideListText">Albums</h5>
+          <h5 className="leftSideListText">Create Playlist</h5>
         </div>
       </div>
     </div>

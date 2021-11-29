@@ -1,0 +1,6 @@
+.mainStoreCont {
+  display: flex;
+  color: white;
+  height: 70%;
+  z-index: 1;
+}

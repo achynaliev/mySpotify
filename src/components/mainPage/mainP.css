@@ -111,3 +111,7 @@
   width: 80%;
   margin: auto;
 }
+
+.listItemLeftBar:hover {
+  cursor: pointer;
+}

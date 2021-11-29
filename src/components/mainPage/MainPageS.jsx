@@ -6,6 +6,7 @@ import SongList from "../songsList/SongList";
 import MusicPlayer from "../musicPlayer/MusicPlayer";
 import { useLocation } from "react-router";
 import UploadSongs from "../addingSongs/UploadSongs";
+import MainStore from "../store/MainStore";
 import "./mainP.css";
 
 const MainPageS = () => {
@@ -16,6 +17,8 @@ const MainPageS = () => {
     mainContent = <SongList />;
   } else if (location.pathname === "/upload") {
     mainContent = <UploadSongs />;
+  } else if (location.pathname === "/store") {
+    mainContent = <MainStore />;
   }
   return (
     <div className="bodyCont">
