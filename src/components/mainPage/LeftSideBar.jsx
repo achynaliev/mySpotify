@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import AlbumIcon from "@mui/icons-material/Album";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 import artist from "../../images/artist.png";
 
 const LeftSideBar = () => {
@@ -37,7 +38,7 @@ const LeftSideBar = () => {
               alt=""
               style={{ width: "28px", height: "28px" }}
             />
-            <h5 className="leftSideListText">Artist</h5>
+            <h5 className="leftSideListText">Artists</h5>
           </div>
         </Link>
         <Link to="/" style={{ textDecoration: "none" }}>
@@ -49,6 +50,13 @@ const LeftSideBar = () => {
             <h5 className="leftSideListText">Albums</h5>
           </div>
         </Link>
+        <div className="listItemLeftBar">
+          <AddBoxIcon
+            sx={{ fontSize: "28px", color: "white" }}
+            className="leftListIcons"
+          />
+          <h5 className="leftSideListText">Albums</h5>
+        </div>
       </div>
     </div>
   );

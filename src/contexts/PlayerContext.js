@@ -63,7 +63,6 @@ const PlayerContextProvider = (props) => {
           .toLowerCase()
           .match(reg)
       ) {
-        if (index === )
         return item;
       }
     });
