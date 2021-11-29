@@ -121,7 +121,7 @@ const MusicPlayer = () => {
       }
     } else {
       if (current === 0) {
-        selectASong(0, true);
+        selectASong(playListLen, true);
       } else {
         selectASong(current - 1, true);
       }

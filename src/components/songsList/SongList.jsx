@@ -2,10 +2,12 @@ import React, { useEffect } from "react";
 import { fireDB } from "../../base.js";
 import { collection, getDocs } from "firebase/firestore";
 import SongItem from "./SongItem";
+import { playerContext } from "../../contexts/PlayerContext.js";
 import "./songs.css";
 
 const SongList = () => {
   const [songs, setSongList] = React.useState([]);
+  const { searchRes } = React.useContext(playerContext);
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -48,9 +50,27 @@ const SongList = () => {
           </div>
         </div>
         <div className="listItemsCont">
-          {songs.map((song, index) => {
-            return <SongItem key={index} songg={song} index={index}></SongItem>;
-          })}
+          {searchRes.length > 0
+            ? searchRes.map((song, index) => {
+                return (
+                  <SongItem
+                    key={index}
+                    songg={song}
+                    index={index}
+                    search={true}
+                  ></SongItem>
+                );
+              })
+            : songs.map((song, index) => {
+                return (
+                  <SongItem
+                    key={index}
+                    songg={song}
+                    index={index}
+                    search={false}
+                  ></SongItem>
+                );
+              })}
         </div>
       </div>
     </>

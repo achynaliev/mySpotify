@@ -2,7 +2,7 @@ import React from "react";
 import "./songs.css";
 import { playerContext } from "../../contexts/PlayerContext";
 
-const SongItem = ({ songg, index }) => {
+const SongItem = ({ songg, index, search }) => {
   const { song, selectASong } = React.useContext(playerContext);
 
   const play = () => {
@@ -49,19 +49,58 @@ const SongItem = ({ songg, index }) => {
   return (
     <div className="songListItem">
       {playPause}
-      <div className="secondItemListItem">
-        <img className="coverListItem" src={songg.songCover} alt=""></img>
-        <h4 className="listItemTexth4">{songg.songName}</h4>
-      </div>
-      <div className="thirdItemListItem">
-        <h4 className="listItemTexth4">{songg.artistName}</h4>
-      </div>
-      <div className="forthItemListItem">
-        <h4 className="listItemTexth4gray">{songg.album}</h4>
-      </div>
-      <div className="fifthItemListItem">
-        <div></div>
-      </div>
+      {search ? (
+        <>
+          <div className="secondItemListItem">
+            <img
+              className="coverListItem"
+              src={
+                songg["_document"].data.value.mapValue.fields.songCover
+                  .stringValue
+              }
+              alt=""
+            ></img>
+            <h4 className="listItemTexth4">
+              {
+                songg["_document"].data.value.mapValue.fields.songName
+                  .stringValue
+              }
+            </h4>
+          </div>
+          <div className="thirdItemListItem">
+            <h4 className="listItemTexth4">
+              {
+                songg["_document"].data.value.mapValue.fields.artistName
+                  .stringValue
+              }
+            </h4>
+          </div>
+          <div className="forthItemListItem">
+            <h4 className="listItemTexth4gray">
+              {songg["_document"].data.value.mapValue.fields.album.stringValue}
+            </h4>
+          </div>
+          <div className="fifthItemListItem">
+            <div></div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="secondItemListItem">
+            <img className="coverListItem" src={songg.songCover} alt=""></img>
+            <h4 className="listItemTexth4">{songg.songName}</h4>
+          </div>
+          <div className="thirdItemListItem">
+            <h4 className="listItemTexth4">{songg.artistName}</h4>
+          </div>
+          <div className="forthItemListItem">
+            <h4 className="listItemTexth4gray">{songg.album}</h4>
+          </div>
+          <div className="fifthItemListItem">
+            <div></div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
