@@ -81,3 +81,9 @@
   display: flex;
   justify-content: space-between;
 }
+
+.CommentsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

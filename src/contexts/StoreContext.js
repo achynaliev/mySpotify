@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import {
   collection,
   addDoc,
+  getDoc,
   getDocs,
   updateDoc,
   deleteDoc,
@@ -19,6 +20,11 @@ const INIT_STATE = {
     ? JSON.parse(localStorage.getItem("cart")).merch.length
     : 0,
   cart: null,
+  productsCountInFavorites: JSON.parse(localStorage.getItem("favorite"))
+    ? JSON.parse(localStorage.getItem("favorite")).favorites.length
+    : 0,
+  favorites: null,
+  singleMerch: null,
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -31,6 +37,12 @@ const reducer = (state = INIT_STATE, action) => {
       return { ...state, merchCountInCart: action.payload };
     case "GET_CART":
       return { ...state, cart: action.payload };
+    case "ADD_AND_DELETE_FAVORITES":
+      return { ...state, productsCountInFavorites: action.payload };
+    case "GET_FAVORITES":
+      return { ...state, favorites: action.payload };
+    case "GET_SINGLE_PRODUCT":
+      return { ...state, singleMerch: action.payload };
     default:
       return state;
   }
@@ -48,6 +60,21 @@ const StoreContextProvider = (props) => {
       } else {
         getItemsByCategory(category);
       }
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const getSingleProduct = async (id) => {
+    try {
+      const musicDocumentRef = doc(fireDB, "products", id);
+      const musicCollection = await getDoc(musicDocumentRef);
+      let singleProduct = musicCollection.data();
+      let action = {
+        type: "GET_SINGLE_PRODUCT",
+        payload: singleProduct,
+      };
+      dispatch(action);
     } catch (e) {
       console.log(e);
     }
@@ -290,6 +317,7 @@ const StoreContextProvider = (props) => {
       payload: favorite.favorites.length,
     });
   };
+
   const checkFavoriteInFavorites = (id) => {
     let favorite = JSON.parse(localStorage.getItem("favorite"));
     if (!favorite) {
@@ -306,6 +334,7 @@ const StoreContextProvider = (props) => {
       return true;
     }
   };
+
   const getFavorite = () => {
     let favorite = JSON.parse(localStorage.getItem("favorite"));
     dispatch({
@@ -328,7 +357,14 @@ const StoreContextProvider = (props) => {
         getItemsByCategory,
         deleteMerchInCart,
         addAndDontDeleteMerchInCart,
+        checkFavoriteInFavorites,
+        addAndDeleteProductInFavorites,
+        getFavorite,
+        getSingleProduct,
+        singleMerch: state.singleMerch,
+        productsCountInFavorites: state.productsCountInFavorites,
         merchCountInCart: state.merchCountInCart,
+        favorites: state.favorites,
         merch: state.merch,
         cart: state.cart,
       }}

@@ -8,11 +8,13 @@ import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { Link } from "react-router-dom";
 import { storeContext } from "../../contexts/StoreContext";
+import StarIcon from "@mui/icons-material/Star";
 import "./store.css";
 
 const MainStore = () => {
   const [open, setOpen] = React.useState(false);
-  const { merchCountInCart } = useContext(storeContext);
+  const { merchCountInCart, productsCountInFavorites } =
+    useContext(storeContext);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const params = useParams();
@@ -36,7 +38,6 @@ const MainStore = () => {
   function handlePageNext() {
     if (currentPage !== pageCount) {
       let pageN = currentPage + 1;
-      console.log("zaebal");
       setCurrentPage(pageN);
     }
   }
@@ -75,7 +76,17 @@ const MainStore = () => {
         <h2 className="MerchHeaderText">Store</h2>
         <div className="m-n">
           {addBtn}
-
+          <Link to="/favorite">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <Badge badgeContent={productsCountInFavorites} color="error">
+                <StarIcon sx={{ fontSize: 30, color: "white" }} />
+              </Badge>
+            </IconButton>
+          </Link>
           <Link to="/cart">
             <IconButton
               size="large"

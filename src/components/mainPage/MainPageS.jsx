@@ -9,6 +9,8 @@ import UploadSongs from "../addingSongs/UploadSongs";
 import MainStore from "../store/MainStore";
 import CartMainPage from "../cart/CartMainPage";
 import CreditMainPage from "../credit/CreditMainPage";
+import FavoriteMainPage from "../favorite/FavoriteMainPage";
+import MerchPageForComment from "../store/MerchPageForComment";
 import "./mainP.css";
 
 const MainPageS = () => {
@@ -26,6 +28,10 @@ const MainPageS = () => {
     mainContent = <CartMainPage />;
   } else if (location.pathname === "/payment") {
     mainContent = <CreditMainPage />;
+  } else if (location.pathname === "/favorite") {
+    mainContent = <FavoriteMainPage />;
+  } else if (location.pathname.includes("/item")) {
+    mainContent = <MerchPageForComment />;
   }
 
   return (

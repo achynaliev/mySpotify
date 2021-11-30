@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import AuthContextProvider from "./contexts/AuthContext";
 import PlayerContextProvider from "./contexts/PlayerContext";
 import StoreContextProvider from "./contexts/StoreContext";
+import CommentContextProvider from "./contexts/CommentContext";
 
 const SpotifyRoutes = () => {
   return (
@@ -14,16 +15,20 @@ const SpotifyRoutes = () => {
       <AuthContextProvider>
         <PlayerContextProvider>
           <StoreContextProvider>
-            <BrowserRouter>
-              <Routes>
-                <Route exact path="/" element={<MainPage />} />
-                <Route exact path="/upload" element={<MainPage />} />
-                <Route exact path="/auth" element={<AuthPage />} />
-                <Route exact path="/store/:category" element={<MainPage />} />
-                <Route exact path="/cart" element={<MainPage />} />
-                <Route exact path="/payment" element={<MainPage />} />
-              </Routes>
-            </BrowserRouter>
+            <CommentContextProvider>
+              <BrowserRouter>
+                <Routes>
+                  <Route exact path="/" element={<MainPage />} />
+                  <Route exact path="/upload" element={<MainPage />} />
+                  <Route exact path="/auth" element={<AuthPage />} />
+                  <Route exact path="/store/:category" element={<MainPage />} />
+                  <Route exact path="/cart" element={<MainPage />} />
+                  <Route exact path="/favorite" element={<MainPage />} />
+                  <Route exact path="/payment" element={<MainPage />} />
+                  <Route exact path="/item/:id" element={<MainPage />} />
+                </Routes>
+              </BrowserRouter>
+            </CommentContextProvider>
           </StoreContextProvider>
         </PlayerContextProvider>
       </AuthContextProvider>

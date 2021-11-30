@@ -9,14 +9,24 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import EditMerchModal from "./EditMerchModal";
 import { storeContext } from "../../contexts/StoreContext";
 import { useNavigate } from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
+import { Link } from "react-router-dom";
 
-const MerchCard = ({ item }) => {
-  let id = item[0];
-  item = { ...item[1], id };
+const MerchCard = ({ item, singleMerch }) => {
+  if (item) {
+    let id = item[0];
+    item = { ...item[1], id };
+  } else {
+    item = singleMerch;
+  }
+
+  console.log(item);
   const {
     addAndDeleteMerchInCart,
     checkMerchInCart,
     addAndDontDeleteMerchInCart,
+    addAndDeleteProductInFavorites,
+    checkFavoriteInFavorites,
   } = useContext(storeContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -55,13 +65,20 @@ const MerchCard = ({ item }) => {
         bgcolor: "rgb(43, 43, 42)",
       }}
     >
-      <CardMedia
-        component="img"
-        height="250"
-        object-fit="cover"
-        image={item.imageURL}
-        alt=""
+      <StarIcon
+        sx={{ position: "absolute", fontSize: "40px" }}
+        color={checkFavoriteInFavorites(item.id) ? "error" : "black"}
+        onClick={() => addAndDeleteProductInFavorites(item)}
       />
+      <Link to={"/item/" + item.id}>
+        <CardMedia
+          component="img"
+          height="250"
+          object-fit="cover"
+          image={item.imageURL}
+          alt=""
+        />
+      </Link>
       <CardContent sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography
           gutterBottom
