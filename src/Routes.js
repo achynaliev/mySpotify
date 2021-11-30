@@ -20,6 +20,7 @@ const SpotifyRoutes = () => {
                 <Route exact path="/upload" element={<MainPage />} />
                 <Route exact path="/auth" element={<AuthPage />} />
                 <Route exact path="/store/:category" element={<MainPage />} />
+                <Route exact path="/cart" element={<MainPage />} />
               </Routes>
             </BrowserRouter>
           </StoreContextProvider>

@@ -7,6 +7,7 @@ import MusicPlayer from "../musicPlayer/MusicPlayer";
 import { useLocation } from "react-router";
 import UploadSongs from "../addingSongs/UploadSongs";
 import MainStore from "../store/MainStore";
+import CartMainPage from "../cart/CartMainPage";
 import "./mainP.css";
 
 const MainPageS = () => {
@@ -20,7 +21,10 @@ const MainPageS = () => {
     mainContent = <UploadSongs />;
   } else if (location.pathname.includes("/store")) {
     mainContent = <MainStore />;
+  } else if (location.pathname === "/cart") {
+    mainContent = <CartMainPage />;
   }
+
   return (
     <div className="bodyCont">
       <LeftSideBar />

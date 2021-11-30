@@ -42,7 +42,7 @@ const AddMerchModal = ({ handleClose, open }) => {
       price: myMerch.price,
       category: myMerch.category,
     };
-    createMerch(merch);
+    createMerch(merch, params.category);
     handleClose();
   }
 

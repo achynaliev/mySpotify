@@ -39,11 +39,15 @@ const reducer = (state = INIT_STATE, action) => {
 const StoreContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  const createMerch = async (merch) => {
+  const createMerch = async (merch, category) => {
     console.log(merch);
     try {
-      let result = await addDoc(collection(fireDB, "products"), merch);
-      console.log(result);
+      await addDoc(collection(fireDB, "products"), merch);
+      if (category === "all") {
+        getAllMerch();
+      } else {
+        getItemsByCategory(category);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -70,7 +74,6 @@ const StoreContextProvider = (props) => {
     console.log(category);
     try {
       if (category === "all") {
-        console.log("here");
         getAllMerch();
       } else {
         const productRef = collection(fireDB, "products");
@@ -94,7 +97,11 @@ const StoreContextProvider = (props) => {
     try {
       const musicDocumentRef = doc(fireDB, "products", id);
       await updateDoc(musicDocumentRef, merch);
-      //getItemsByCategory(category);
+      if (category === "all") {
+        getAllMerch();
+      } else {
+        getItemsByCategory(category);
+      }
     } catch (e) {
       console.log(e);
     }
@@ -104,6 +111,11 @@ const StoreContextProvider = (props) => {
     try {
       const musicDocumentRef = doc(fireDB, "products", id);
       await deleteDoc(musicDocumentRef);
+      if (category === "all") {
+        getAllMerch();
+      } else {
+        getItemsByCategory(category);
+      }
     } catch (e) {
       console.log(e);
     }
