@@ -1,6 +1,5 @@
 .cartMainPage {
   width: 100%;
-  margin: auto;
   display: flex;
   justify-content: space-between;
   color: rgb(190, 187, 187);
@@ -26,6 +25,8 @@
 
 .hz {
   display: flex;
+  overflow: auto;
+  height: 70%;
 }
 
 .buyBtnCartPage {

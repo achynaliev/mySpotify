@@ -8,6 +8,7 @@ import { useLocation } from "react-router";
 import UploadSongs from "../addingSongs/UploadSongs";
 import MainStore from "../store/MainStore";
 import CartMainPage from "../cart/CartMainPage";
+import CreditMainPage from "../credit/CreditMainPage";
 import "./mainP.css";
 
 const MainPageS = () => {
@@ -23,6 +24,8 @@ const MainPageS = () => {
     mainContent = <MainStore />;
   } else if (location.pathname === "/cart") {
     mainContent = <CartMainPage />;
+  } else if (location.pathname === "/payment") {
+    mainContent = <CreditMainPage />;
   }
 
   return (

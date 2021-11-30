@@ -264,6 +264,56 @@ const StoreContextProvider = (props) => {
     getCart();
   };
 
+  const addAndDeleteProductInFavorites = (item) => {
+    let favorite = JSON.parse(localStorage.getItem("favorite"));
+    if (!favorite) {
+      favorite = {
+        favorites: [],
+      };
+    }
+    let favProduct = {
+      item: item,
+    };
+    let checkArr = favorite.favorites.filter((elem) => {
+      return elem.item.id === item.id;
+    });
+    if (checkArr.length === 0) {
+      favorite.favorites.push(favProduct);
+    } else {
+      favorite.favorites = favorite.favorites.filter((elem) => {
+        return elem.item.id !== item.id;
+      });
+    }
+    localStorage.setItem("favorite", JSON.stringify(favorite));
+    dispatch({
+      type: "ADD_AND_DELETE_FAVORITES",
+      payload: favorite.favorites.length,
+    });
+  };
+  const checkFavoriteInFavorites = (id) => {
+    let favorite = JSON.parse(localStorage.getItem("favorite"));
+    if (!favorite) {
+      favorite = {
+        favorites: [],
+      };
+    }
+    let checkArr = favorite.favorites.filter((elem) => {
+      return elem.item.id === id;
+    });
+    if (checkArr.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+  const getFavorite = () => {
+    let favorite = JSON.parse(localStorage.getItem("favorite"));
+    dispatch({
+      type: "GET_FAVORITES",
+      payload: favorite,
+    });
+  };
+
   return (
     <storeContext.Provider
       value={{

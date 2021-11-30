@@ -23,7 +23,7 @@ const RightSideCart = () => {
   }, []);
 
   function handleBuy() {
-    navigate("/credit");
+    navigate("/payment");
   }
 
   function handleDeleteMerch(e, merch) {
