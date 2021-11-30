@@ -11,13 +11,14 @@ import "./mainP.css";
 
 const MainPageS = () => {
   let location = useLocation();
+  console.log(location.pathname);
 
   let mainContent;
   if (location.pathname === "/") {
     mainContent = <SongList />;
   } else if (location.pathname === "/upload") {
     mainContent = <UploadSongs />;
-  } else if (location.pathname === "/store") {
+  } else if (location.pathname.includes("/store")) {
     mainContent = <MainStore />;
   }
   return (

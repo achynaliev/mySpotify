@@ -36,7 +36,7 @@ const LeftSideBar = () => {
             <h5 className="leftSideListText">Upload</h5>
           </div>
         </Link>
-        <Link to="/store" style={{ textDecoration: "none" }}>
+        <Link to="/store/all" style={{ textDecoration: "none" }}>
           <div className="listItemLeftBar">
             <ProductionQuantityLimitsIcon
               sx={{ fontSize: "28px", color: "white" }}

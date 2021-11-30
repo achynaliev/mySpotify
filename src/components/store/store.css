@@ -1,6 +1,83 @@
 .mainStoreCont {
   display: flex;
-  color: white;
-  height: 70%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  top: 10;
+  margin: auto;
+  height: 84%;
+  overflow: auto;
   z-index: 1;
+}
+
+.merchNavbar {
+  width: 90%;
+  height: 10%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+/* border-bottom: 0.05px solid rgb(117, 117, 117); */
+.categories {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  z-index: 1;
+}
+
+.merchCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.m-n {
+  display: flex;
+}
+
+.merchList {
+  color: white;
+}
+
+.merchCardList {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.addMerchModal {
+  color: white;
+}
+
+.form {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.category {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.MerchHeaderText {
+  font-size: 400;
+  padding-top: 10px;
+}
+
+.pagination {
+  width: 90%;
+  height: 10%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
 }
