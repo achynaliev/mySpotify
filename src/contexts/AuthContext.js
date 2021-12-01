@@ -85,6 +85,7 @@ const AuthContextProvider = (props) => {
           type: "LOGOUT_USER",
           payload: null,
         });
+        localStorage.clear();
       })
       .catch((error) => {
         console.log(error);

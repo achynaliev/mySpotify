@@ -115,3 +115,47 @@
 .listItemLeftBar:hover {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 375px) {
+  .rightSideMainCont {
+    display: none;
+  }
+
+  .leftSideListText {
+    display: none;
+  }
+
+  .leftSideMainCont {
+    width: 10%;
+  }
+
+  .mainLogo {
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: auto;
+  }
+
+  .listItemLeftBar {
+    margin-left: -10;
+    padding: 0;
+  }
+
+  .left-text {
+    width: 10%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .navWrapper {
+    width: 90;
+  }
+
+  .navContainer {
+    width: 100%;
+  }
+
+  .NavUserProfile {
+    width: 30%;
+  }
+}

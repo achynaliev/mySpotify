@@ -114,3 +114,30 @@
 .lock:hover .icon-lock {
   display: inline;
 }
+
+@media only screen and (max-width: 375px) {
+  .songListCont {
+    width: 100%;
+  }
+
+  .forthItemListItem {
+    display: none;
+  }
+
+  .fifthItemListItem {
+    display: none;
+  }
+
+  .thirdItemListItem {
+    display: none;
+  }
+
+  .firstItemListItem {
+    width: 10%;
+  }
+
+  .secondItemListItem {
+    display: flex;
+    width: 85%;
+  }
+}

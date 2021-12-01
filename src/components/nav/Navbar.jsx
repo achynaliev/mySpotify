@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { useNavigate } from "react-router";
+import { authContext } from "../../contexts/AuthContext";
 import "../mainPage/mainP.css";
 
 const Navbar = () => {
   let user = localStorage.getItem("userFields");
   user = JSON.parse(user);
   const [userState, setUserState] = useState({ imageURL: "", username: "" });
+  const { logOut } = React.useContext(authContext);
 
   const setUser = () => {
     user = localStorage.getItem("userFields");
@@ -18,6 +21,13 @@ const Navbar = () => {
         username: user.username.stringValue,
       });
     }
+  };
+
+  let navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOut();
+    navigate("/auth");
   };
 
   React.useEffect(() => {
@@ -43,7 +53,7 @@ const Navbar = () => {
         <div className="NavUserProfile">
           <img className="userAva" src={userState.imageURL} alt="" />
           <h4 className="NavUsername">@{userState.username}</h4>
-          <ArrowDropDownIcon />
+          <ArrowDropDownIcon onClick={handleLogout} />
         </div>
       </div>
       <div style={{ backgroundColor: randomColor }} className="blurred"></div>
