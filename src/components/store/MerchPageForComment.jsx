@@ -3,6 +3,7 @@ import { storeContext } from "../../contexts/StoreContext";
 import { useParams } from "react-router-dom";
 import MerchCard from "./MerchCard";
 import CommentInput from "./CommentInput";
+import CommentList from "./CommentList";
 import "./store.css";
 
 const MerchPageForComment = () => {
@@ -16,6 +17,7 @@ const MerchPageForComment = () => {
     <div className="CommentsPage">
       {singleMerch ? <MerchCard singleMerch={singleMerch} /> : <div></div>}
       <CommentInput />
+      <CommentList />
     </div>
   );
 };

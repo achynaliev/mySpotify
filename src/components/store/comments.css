@@ -1,0 +1,13 @@
+.CommentInputCont {
+  padding-top: 10px;
+}
+
+.CommentInputCont > input {
+  background-color: rgb(65, 65, 65);
+  color: white;
+}
+
+.singleComment > h4 {
+  font-size: 20px;
+  font-weight: 300;
+}
